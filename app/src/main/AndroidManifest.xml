@@ -15,6 +15,7 @@
                     <category android:name="android.intent.category.LAUNCHER" />
                 </intent-filter>
             </activity>
+        <activity android:name="cn.edu.pku.zuofei.miniweather.SelectCity"></activity>
         </application>
 
 </manifest>

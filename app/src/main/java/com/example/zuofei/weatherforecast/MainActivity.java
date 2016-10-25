@@ -2,6 +2,7 @@ package com.example.zuofei.weatherforecast;
 
 import android.app.Activity;
 import android.app.Notification;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import cn.edu.pku.zuofei.bean.TodayWeather;
+import cn.edu.pku.zuofei.miniweather.SelectCity;
 import cn.edu.pku.zuofei.util.NetUtil;
 
 /**
@@ -33,6 +35,7 @@ import cn.edu.pku.zuofei.util.NetUtil;
 public class MainActivity extends Activity implements View.OnClickListener{
     private static  final int UPDATE_TODAY_WEATHER=1;
     private ImageView mUpdateBtn;
+    private ImageView mCitySelect;
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv;
     private ImageView weatherImg, pmImg;
@@ -60,6 +63,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     {Log.d("myWeather","网络挂了");
         Toast.makeText(MainActivity.this,"网络挂了",Toast.LENGTH_LONG).show();
     }
+        mCitySelect = (ImageView)findViewById(R.id.title_city_manager);
+        mCitySelect.setOnClickListener(this);
         initView();
     }
 
@@ -110,6 +115,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
     @Override
     public void onClick(View view){
+        if (view.getId()== R.id.title_city_manager){
+            Intent i = new Intent(this, SelectCity.class);
+            //startActivity(i);
+            startActivityForResult(i,1);
+        }
         if(view.getId()==R.id.title_update_btn){
             SharedPreferences   sharedPreferences=getSharedPreferences("config",MODE_PRIVATE);
             String cityCode=sharedPreferences.getString("main_city_code","101010100");
@@ -117,6 +127,19 @@ public class MainActivity extends Activity implements View.OnClickListener{
             if(NetUtil.getNetworkState(this)!=NetUtil.NETWORN_NONE){
                 Log.d("myWeather","网络ok");
                 queryWeatherCode(cityCode);
+            }else{
+                Log.d("myWeather","网络挂了");
+                Toast.makeText(MainActivity.this,"网络挂了！",Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        if (requestCode == 1&&resultCode == RESULT_OK){
+            String newCityCode = data.getStringExtra("cityCode");
+            Log.d("myweather","选择的城市代码"+newCityCode);
+            if(NetUtil.getNetworkState(this)!=NetUtil.NETWORN_NONE){
+                Log.d("myWeather","网络ok");
+                queryWeatherCode(newCityCode);
             }else{
                 Log.d("myWeather","网络挂了");
                 Toast.makeText(MainActivity.this,"网络挂了！",Toast.LENGTH_LONG).show();
