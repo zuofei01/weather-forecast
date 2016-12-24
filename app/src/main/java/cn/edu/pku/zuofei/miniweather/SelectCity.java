@@ -3,9 +3,13 @@ package cn.edu.pku.zuofei.miniweather;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,6 +32,10 @@ public class SelectCity extends Activity implements View.OnClickListener{
     ArrayList<String> cityId = new ArrayList<String>();
     List<City> data = new ArrayList<City>();
     String SelectedId;
+    private EditText m_EditText;
+    private String[] mdata;
+    private String[] backeupData;
+    private ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState ){
         super.onCreate(savedInstanceState);
@@ -43,7 +51,11 @@ public class SelectCity extends Activity implements View.OnClickListener{
             cityId.add(data.get(i).getNumber().toString());
             i++;
         }
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(
+        mdata = new String[data.size()];
+        backeupData = new String[data.size()];
+        mdata = city.toArray(mdata);
+        System.arraycopy(mdata, 0, backeupData, 0, mdata.length);
+        final ArrayAdapter<String> adapter=new ArrayAdapter<String>(
                 SelectCity.this,android.R.layout.simple_list_item_1,city);
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,7 +68,46 @@ public class SelectCity extends Activity implements View.OnClickListener{
                 finish();
             }
         });
+
+
+        m_EditText =(EditText) findViewById(R.id.search_edit);
+        m_EditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.d("EditText", "beforeTextChanged");
+            }
+
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String searchContent = s.toString();
+                ArrayList<String> newDataList = new ArrayList<String>();
+                for (int i = 0; i < backeupData.length; i++){
+                   Log.d("EditText", backeupData[i].substring(0, searchContent.length()));
+                    if (backeupData[i].substring(0, searchContent.length()).equals(searchContent)){
+                        newDataList.add(backeupData[i]);
+                    }
+                }
+                int j = 0;
+                for(; j < newDataList.size(); j++){
+                    mdata[j] = newDataList.get(j);
+                }
+
+                for (; j < mdata.length; j++){
+                    mdata[j] = "";
+                }
+
+                adapter.notifyDataSetChanged();
+                Log.d("EditText", "onTextChanged" + s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
