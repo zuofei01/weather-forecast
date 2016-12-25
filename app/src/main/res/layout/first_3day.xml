@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/yesterday_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp">
+
+        <TextView
+            android:id="@+id/yesterday_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/yesterday_weatherImg"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_below="@id/yesterday_date"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/biz_plugin_weather_0_50"
+            />
+
+        <TextView
+            android:id="@+id/yesterday_temperature_high_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yesterday_weatherImg"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/yesterday_weatherType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yesterday_temperature_high_low"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/yesterday_fengli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yesterday_weatherType"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/day1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/yesterday_detail">
+
+        <TextView
+            android:id="@+id/day1_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"/>
+        <ImageView
+            android:id="@+id/day1_weather"
+            android:layout_width="110dip"
+            android:layout_height="110dip"
+            android:layout_below="@id/day1_week"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dip"
+            android:src="@drawable/biz_plugin_weather_0_50"/>
+        <TextView
+            android:id="@+id/day1_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/day1_weather"
+            android:layout_marginTop="10dip"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/day1_weatherType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/day1_temperature"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/day1_fengli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/day1_weatherType"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/day2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/day1">
+
+        <TextView
+            android:id="@+id/day2_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"/>
+        <ImageView
+            android:id="@+id/day2_weather"
+            android:layout_width="110dip"
+            android:layout_height="110dip"
+            android:layout_below="@id/day2_week"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dip"
+            android:src="@drawable/biz_plugin_weather_0_50"/>
+        <TextView
+            android:id="@+id/day2_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/day2_weather"
+            android:layout_marginTop="10dip"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/day2_weatherType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/day2_temperature"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/day2_fengli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/day2_weatherType"
+            android:layout_centerHorizontal="true"
+            android:text="N/A"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

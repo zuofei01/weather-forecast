@@ -1,2 +1,2 @@
 # mini-weather
-更新到listview为止的全部功能
+更新六日天气

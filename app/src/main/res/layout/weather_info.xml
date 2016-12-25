@@ -241,6 +241,24 @@
 
 
         </RelativeLayout>
+        <!--七日天气信息-->
+
+
+
+        -<RelativeLayout android:layout_height="wrap_content" android:layout_width="match_parent">
+
+        <android.support.v4.view.ViewPager android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/six_day_info"> </android.support.v4.view.ViewPager>
+
+
+        -<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/weather_info_page" android:layout_centerHorizontal="true" android:orientation="horizontal" android:layout_alignParentBottom="true" android:layout_marginBottom="24.0dip">
+
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/dot" android:layout_gravity="center_vertical" android:padding="15.0dip" android:clickable="true"/>
+
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/dot" android:layout_gravity="center_vertical" android:padding="15.0dip" android:clickable="true"/>
+
+    </LinearLayout>
+
+    </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>
